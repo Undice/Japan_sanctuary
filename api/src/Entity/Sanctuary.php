@@ -2,11 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\SanctuaryRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
-#[ORM\Entity(repositoryClass: SanctuaryRepository::class)]
+#[ORM\Entity]
 class Sanctuary
 {
     #[ORM\Id]
@@ -23,13 +22,13 @@ class Sanctuary
     #[Groups(['sanctuary_read'])]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: 'datetime')]
     #[Groups(['sanctuary_read'])]
-    private ?\DateTimeInterface $date_fondation = null;
+    private ?\DateTimeInterface $dateFondation = null;
 
     #[ORM\Column]
     #[Groups(['sanctuary_read'])]
-    private ?int $entry_price = null;
+    private ?int $entryPrice = null;
 
     #[ORM\Column(length: 255)]
     #[Groups(['sanctuary_read'])]
@@ -41,17 +40,18 @@ class Sanctuary
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['sanctuary_read'])]
-    private ?string $email_contact = null;
+    private ?string $emailContact = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['sanctuary_read'])]
     private ?string $photo = null;
 
-    // Relation OneToMany simplifiée : seulement l'ID du User
-    #[ORM\ManyToOne(inversedBy: 'sanctuaries')]
-    #[ORM\JoinColumn(name: 'creator_id', referencedColumnName: 'id', nullable: false)]
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    #[ORM\JoinColumn(nullable: false)]
     #[Groups(['sanctuary_read'])]
     private ?User $creator = null;
+
+
 
     public function getId(): ?int
     {
@@ -63,97 +63,90 @@ class Sanctuary
         return $this->name;
     }
 
-    public function setName(string $name): static
+    public function setName(string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
-
     public function getDescription(): ?string
     {
         return $this->description;
     }
-
-    public function setDescription(?string $description): static
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
+
         return $this;
     }
-
     public function getDateFondation(): ?\DateTimeInterface
     {
-        return $this->date_fondation;
-    }
-
-    public function setDateFondation(\DateTimeInterface $date_fondation): static
+        return $this->dateFondation;
+    } 
+    public function setDateFondation(\DateTimeInterface $dateFondation): self
     {
-        $this->date_fondation = $date_fondation;
+        $this->dateFondation = $dateFondation;
+
         return $this;
     }
-
     public function getEntryPrice(): ?int
     {
-        return $this->entry_price;
+        return $this->entryPrice;
     }
-
-    public function setEntryPrice(int $entry_price): static
+    public function setEntryPrice(int $entryPrice): self
     {
-        $this->entry_price = $entry_price;
+        $this->entryPrice = $entryPrice;
+
         return $this;
     }
-
     public function getLatitude(): ?string
     {
         return $this->latitude;
     }
-
-    public function setLatitude(string $latitude): static
+    public function setLatitude(string $latitude): self
     {
         $this->latitude = $latitude;
+
         return $this;
     }
-
     public function getLongitude(): ?string
     {
         return $this->longitude;
     }
-
-    public function setLongitude(string $longitude): static
+    public function setLongitude(string $longitude): self
     {
         $this->longitude = $longitude;
+
         return $this;
     }
-
     public function getEmailContact(): ?string
     {
-        return $this->email_contact;
+        return $this->emailContact;
     }
-
-    public function setEmailContact(?string $email_contact): static
+    public function setEmailContact(?string $emailContact): self
     {
-        $this->email_contact = $email_contact;
+        $this->emailContact = $emailContact;
+
         return $this;
     }
-
     public function getPhoto(): ?string
     {
         return $this->photo;
     }
-
-    public function setPhoto(?string $photo): static
+    public function setPhoto(?string $photo): self
     {
         $this->photo = $photo;
+
         return $this;
     }
-
     public function getCreator(): ?User
     {
         return $this->creator;
     }
-
-    public function setCreator(?User $creator): static
+    public function setCreator(?User $creator): self
     {
         $this->creator = $creator;
+
         return $this;
     }
 }
