@@ -12,35 +12,45 @@ class Sanctuary
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['sanctuary_read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['sanctuary_read'])]
     private ?string $name = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['sanctuary_read'])]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(['sanctuary_read'])]
     private ?\DateTimeInterface $date_fondation = null;
 
     #[ORM\Column]
+    #[Groups(['sanctuary_read'])]
     private ?int $entry_price = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['sanctuary_read'])]
     private ?string $latitude = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['sanctuary_read'])]
     private ?string $longitude = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['sanctuary_read'])]
     private ?string $email_contact = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['sanctuary_read'])]
     private ?string $photo = null;
 
     // Relation OneToMany simplifiée : seulement l'ID du User
     #[ORM\ManyToOne(inversedBy: 'sanctuaries')]
     #[ORM\JoinColumn(name: 'creator_id', referencedColumnName: 'id', nullable: false)]
+    #[Groups(['sanctuary_read'])]
     private ?User $creator = null;
 
     public function getId(): ?int

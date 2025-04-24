@@ -1,3 +1,5 @@
+# API
+
 ###> symfony/framework-bundle ###
 /api/.env
 /api/.env.local
@@ -24,7 +26,9 @@
 /api/assets/vendor/
 ###< symfony/asset-mapper ###
 
------------------
+-------------------------------------
+### FLUTTER HOMER ###
+
 
 # Miscellaneous
 /flutter_homer/*.class

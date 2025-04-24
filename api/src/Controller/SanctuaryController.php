@@ -31,7 +31,7 @@ class SanctuaryController extends AbstractController
         $sanctuary->setPhoto($data['photo']);
 
         // Assurez-vous que l'utilisateur existe avant de l'assigner
-        $creator = $entityManager->getRepository(User::class)->find($data['creator_id']);
+        $creator = $entityManager->getReference(User::class, $data['creator_id']);
         if (!$creator) {
             return new Response('Creator not found', Response::HTTP_NOT_FOUND);
         }
@@ -45,7 +45,7 @@ class SanctuaryController extends AbstractController
         return $this->json([
             'status' => 'Sanctuary created successfully',
             'sanctuary' => $sanctuary
-        ], Response::HTTP_CREATED);
+        ], Response::HTTP_CREATED, [], ['groups' => 'sanctuary_read']);
     }
 
     // Récupérer tous les sanctuaires
@@ -53,7 +53,7 @@ class SanctuaryController extends AbstractController
     public function getAllSanctuaries(EntityManagerInterface $entityManager): Response
     {
         $sanctuaries = $entityManager->getRepository(Sanctuary::class)->findAll();
-        return $this->json($sanctuaries);
+        return $this->json($sanctuaries, Response::HTTP_OK, [], ['groups' => 'sanctuary_read']);
     }
 
     // Récupérer un Sanctuary par ID
@@ -66,7 +66,7 @@ class SanctuaryController extends AbstractController
             return new Response('Sanctuary not found', Response::HTTP_NOT_FOUND);
         }
 
-        return $this->json($sanctuary);
+        return $this->json($sanctuary, Response::HTTP_OK, [], ['groups' => 'sanctuary_read']);
     }
 
     // Modifier un Sanctuary par ID
@@ -97,7 +97,7 @@ class SanctuaryController extends AbstractController
         return $this->json([
             'status' => 'Sanctuary updated successfully',
             'sanctuary' => $sanctuary
-        ]);
+        ], Response::HTTP_OK, [], ['groups' => 'sanctuary_read']);
     }
 
     // Supprimer un Sanctuary par ID
