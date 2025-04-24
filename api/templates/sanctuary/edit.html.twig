@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Sanctuary{% endblock %}
+
+{% block body %}
+    <h1>Edit Sanctuary</h1>
+
+    {{ include('sanctuary/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_sanctuary_index') }}">back to list</a>
+
+    {{ include('sanctuary/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Sanctuary{% endblock %}
+
+{% block body %}
+    <h1>Create new Sanctuary</h1>
+
+    {{ include('sanctuary/_form.html.twig') }}
+
+    <a href="{{ path('app_sanctuary_index') }}">back to list</a>
+{% endblock %}

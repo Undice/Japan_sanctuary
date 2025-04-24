@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sanctuary{% endblock %}
+
+{% block body %}
+    <h1>Sanctuary</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sanctuary.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ sanctuary.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ sanctuary.description }}</td>
+            </tr>
+            <tr>
+                <th>Date_fondation</th>
+                <td>{{ sanctuary.dateFondation ? sanctuary.dateFondation|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Entry_price</th>
+                <td>{{ sanctuary.entryPrice }}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{ sanctuary.latitude }}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{ sanctuary.longitude }}</td>
+            </tr>
+            <tr>
+                <th>Email_contact</th>
+                <td>{{ sanctuary.emailContact }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ sanctuary.photo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sanctuary_index') }}">back to list</a>
+
+    <a href="{{ path('app_sanctuary_edit', {'id': sanctuary.id}) }}">edit</a>
+
+    {{ include('sanctuary/_delete_form.html.twig') }}
+{% endblock %}

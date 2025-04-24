@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sanctuary index{% endblock %}
+
+{% block body %}
+    <h1>Sanctuary index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Date_fondation</th>
+                <th>Entry_price</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Email_contact</th>
+                <th>Photo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sanctuary in sanctuaries %}
+            <tr>
+                <td>{{ sanctuary.id }}</td>
+                <td>{{ sanctuary.name }}</td>
+                <td>{{ sanctuary.description }}</td>
+                <td>{{ sanctuary.dateFondation ? sanctuary.dateFondation|date('Y-m-d') : '' }}</td>
+                <td>{{ sanctuary.entryPrice }}</td>
+                <td>{{ sanctuary.latitude }}</td>
+                <td>{{ sanctuary.longitude }}</td>
+                <td>{{ sanctuary.emailContact }}</td>
+                <td>{{ sanctuary.photo }}</td>
+                <td>
+                    <a href="{{ path('app_sanctuary_show', {'id': sanctuary.id}) }}">show</a>
+                    <a href="{{ path('app_sanctuary_edit', {'id': sanctuary.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_sanctuary_new') }}">Create new</a>
+{% endblock %}

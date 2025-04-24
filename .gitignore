@@ -1,0 +1,73 @@
+###> symfony/framework-bundle ###
+/api/.env
+/api/.env.local
+/api/.env.local.php
+/api/.env.*.local
+/api/config/secrets/prod/prod.decrypt.private.php
+/api/public/bundles/
+/api/var/
+/api/vendor/
+###< symfony/framework-bundle ###
+
+###> phpunit/phpunit ###
+/api/phpunit.xml
+/api/.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> symfony/phpunit-bridge ###
+/api/.phpunit.result.cache
+/api/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> symfony/asset-mapper ###
+/api/public/assets/
+/api/assets/vendor/
+###< symfony/asset-mapper ###
+
+-----------------
+
+# Miscellaneous
+/flutter_homer/*.class
+/flutter_homer/*.log
+/flutter_homer/*.pyc
+/flutter_homer/*.swp
+/flutter_homer/.DS_Store
+/flutter_homer/.atom/
+/flutter_homer/.build/
+/flutter_homer/.buildlog/
+/flutter_homer/.history
+/flutter_homer/.svn/
+/flutter_homer/.swiftpm/
+/flutter_homer/migrate_working_dir/
+
+# IntelliJ related
+/flutter_homer/*.iml
+/flutter_homer/*.ipr
+/flutter_homer/*.iws
+/flutter_homer/.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+/flutter_homer/**/doc/api/
+/flutter_homer/**/ios/Flutter/.last_build_id
+/flutter_homer/.dart_tool/
+/flutter_homer/.flutter-plugins
+/flutter_homer/.flutter-plugins-dependencies
+/flutter_homer/.pub-cache/
+/flutter_homer/.pub/
+/flutter_homer/build/
+
+# Symbolication related
+/flutter_homer/app.*.symbols
+
+# Obfuscation related
+/flutter_homer/app.*.map.json
+
+# Android Studio will place build artifacts here
+/flutter_homer/android/app/debug
+/flutter_homer/android/app/profile
+/flutter_homer/android/app/release
